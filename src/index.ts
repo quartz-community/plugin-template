@@ -9,3 +9,18 @@ export type {
   ExampleEmitterOptions,
   ExampleComponentOptions,
 } from "./types";
+
+// Re-export shared types from @quartz-community/types
+export type {
+  QuartzComponent,
+  QuartzComponentProps,
+  StringResource,
+  QuartzTransformerPlugin,
+  QuartzFilterPlugin,
+  QuartzEmitterPlugin,
+  FileTrieNode,
+  ContentIndex,
+  ExplorerOptions,
+  GraphOptions,
+  SearchOptions,
+} from "@quartz-community/types";

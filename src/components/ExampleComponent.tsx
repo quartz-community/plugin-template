@@ -1,29 +1,10 @@
-import type { VNode, JSX } from "preact";
+import type { VNode } from "preact";
+import type { QuartzComponentProps, QuartzComponent } from "@quartz-community/types";
 
 export interface ExampleComponentOptions {
   prefix?: string;
   suffix?: string;
   className?: string;
-}
-
-export type QuartzComponentProps = {
-  ctx: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  externalResources: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  fileData: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  cfg: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  children: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  tree: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  allFiles: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
-  displayClass?: "mobile-only" | "desktop-only";
-} & JSX.IntrinsicAttributes & {
-    [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  };
-
-export interface QuartzComponent {
-  (props: QuartzComponentProps): VNode;
-  css?: string;
-  beforeDOMLoaded?: string;
-  afterDOMLoaded?: string;
 }
 
 export const ExampleComponent = (opts?: ExampleComponentOptions) => {
