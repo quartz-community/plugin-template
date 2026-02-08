@@ -1,5 +1,13 @@
-import type { VNode } from "preact";
-import type { QuartzComponentProps, QuartzComponent } from "@quartz-community/types";
+import type {
+  QuartzComponent,
+  QuartzComponentProps,
+  QuartzComponentConstructor,
+} from "@quartz-community/types";
+import { classNames } from "../util/lang";
+import { i18n } from "../i18n";
+import style from "./styles/example.scss";
+// @ts-ignore
+import script from "./scripts/example.inline.ts";
 
 export interface ExampleComponentOptions {
   prefix?: string;
@@ -7,34 +15,18 @@ export interface ExampleComponentOptions {
   className?: string;
 }
 
-export const ExampleComponent = (opts?: ExampleComponentOptions) => {
+export default ((opts?: ExampleComponentOptions) => {
   const { prefix = "", suffix = "", className = "example-component" } = opts ?? {};
 
   const Component: QuartzComponent = (props: QuartzComponentProps) => {
     const title = props.fileData?.frontmatter?.title ?? "Untitled";
     const fullText = `${prefix}${title}${suffix}`;
 
-    return <div class={className}>{fullText}</div>;
+    return <div class={classNames(className)}>{fullText}</div>;
   };
 
-  Component.css = `
-    .example-component {
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-radius: 4px;
-      font-weight: 600;
-      display: inline-block;
-    }
-  `;
-
-  Component.afterDOMLoaded = `
-    document.addEventListener('nav', () => {
-      console.log('ExampleComponent: page navigation occurred');
-    });
-  `;
+  Component.css = style;
+  Component.afterDOMLoaded = script;
 
   return Component;
-};
-
-export default ExampleComponent;
+}) satisfies QuartzComponentConstructor;
