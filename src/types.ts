@@ -12,6 +12,11 @@ export type {
   QuartzTransformerPlugin,
   QuartzTransformerPluginInstance,
   StaticResources,
+  PageMatcher,
+  PageGenerator,
+  VirtualPage,
+  QuartzPageTypePlugin,
+  QuartzPageTypePluginInstance,
 } from "@quartz-community/types";
 
 export interface ExampleTransformerOptions {

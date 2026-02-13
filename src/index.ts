@@ -20,4 +20,9 @@ export type {
   QuartzTransformerPlugin,
   QuartzFilterPlugin,
   QuartzEmitterPlugin,
+  QuartzPageTypePlugin,
+  QuartzPageTypePluginInstance,
+  PageMatcher,
+  PageGenerator,
+  VirtualPage,
 } from "@quartz-community/types";
