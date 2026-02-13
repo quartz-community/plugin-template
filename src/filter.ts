@@ -1,6 +1,4 @@
-import type { QuartzFilterPlugin } from "@jackyzha0/quartz/plugins/types";
-import type { ProcessedContent } from "@jackyzha0/quartz/plugins/vfile";
-import type { BuildCtx } from "@jackyzha0/quartz/util/ctx";
+import type { QuartzFilterPlugin, ProcessedContent, BuildCtx } from "@quartz-community/types";
 import type { ExampleFilterOptions } from "./types";
 
 const defaultOptions: ExampleFilterOptions = {

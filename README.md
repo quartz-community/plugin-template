@@ -161,6 +161,84 @@ npm run format
 Tags matching `v*` trigger the GitHub Actions publish workflow. Ensure `NPM_TOKEN` is set in the
 repository secrets.
 
+## Component Plugins (UI Components)
+
+In addition to transformer/filter/emitter plugins, you can create **component plugins** that provide
+UI elements for Quartz layouts. See `src/components/ExampleComponent.tsx` for a reference.
+
+### Component Pattern
+
+```tsx
+import type { QuartzComponent, QuartzComponentConstructor } from "@quartz-community/types";
+import style from "./styles/example.scss";
+import script from "./scripts/example.inline.ts";
+
+export default ((opts?: MyComponentOptions) => {
+  const Component: QuartzComponent = (props) => {
+    return <div class="my-component">...</div>;
+  };
+
+  Component.css = style;
+  Component.afterDOMLoaded = script;
+
+  return Component;
+}) satisfies QuartzComponentConstructor;
+```
+
+### Client-Side Scripts
+
+Component scripts run in the browser and must handle Quartz's SPA navigation. Key patterns:
+
+1. **Use `@ts-nocheck`** - Client scripts run in a different context than build-time code
+2. **Listen to `nav` event** - Fires after each page navigation (including initial load)
+3. **Listen to `prenav` event** - Fires before navigation, use for saving state
+4. **Use `window.addCleanup()`** - Register cleanup functions for event listeners
+5. **Fetch `/static/contentIndex.json`** - Access page metadata for search, graph, etc.
+
+See `src/components/scripts/example.inline.ts` for a complete example with all patterns.
+
+### Common Helper Functions
+
+These utilities are commonly needed in component plugins:
+
+```js
+function removeAllChildren(element) {
+  while (element.firstChild) element.removeChild(element.firstChild);
+}
+
+function simplifySlug(slug) {
+  return slug.endsWith("/index") ? slug.slice(0, -6) : slug;
+}
+
+function getCurrentSlug() {
+  let slug = window.location.pathname;
+  if (slug.startsWith("/")) slug = slug.slice(1);
+  if (slug.endsWith("/")) slug = slug.slice(0, -1);
+  return slug || "index";
+}
+```
+
+### State Persistence
+
+Use `localStorage` for persistent state (survives browser close) and `sessionStorage` for
+temporary state (like scroll positions):
+
+```js
+localStorage.setItem("myPlugin-state", JSON.stringify(state));
+sessionStorage.setItem("myPlugin-scrollTop", element.scrollTop.toString());
+```
+
+## Migration Guide (from Quartz v4)
+
+When migrating a v4 component to a standalone plugin:
+
+1. **Replace Quartz imports** with `@quartz-community/types`
+2. **Copy utility functions** (path helpers, DOM utils) into your plugin
+3. **Use `@ts-nocheck`** for inline scripts that can't be type-checked
+4. **Fetch data directly** from `/static/contentIndex.json` instead of using `fetchData`
+5. **Handle both data formats**: `data.content || data` for contentIndex compatibility
+6. **Test with both local and production builds**
+
 ## License
 
 MIT

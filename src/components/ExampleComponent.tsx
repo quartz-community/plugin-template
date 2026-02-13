@@ -19,7 +19,8 @@ export default ((opts?: ExampleComponentOptions) => {
   const { prefix = "", suffix = "", className = "example-component" } = opts ?? {};
 
   const Component: QuartzComponent = (props: QuartzComponentProps) => {
-    const title = props.fileData?.frontmatter?.title ?? "Untitled";
+    const frontmatter = props.fileData?.frontmatter as { title?: string } | undefined;
+    const title = frontmatter?.title ?? "Untitled";
     const fullText = `${prefix}${title}${suffix}`;
 
     return <div class={classNames(className)}>{fullText}</div>;

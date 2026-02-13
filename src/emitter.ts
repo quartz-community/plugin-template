@@ -1,9 +1,12 @@
 import path from "node:path";
 import fs from "node:fs/promises";
-import type { QuartzEmitterPlugin } from "@jackyzha0/quartz/plugins/types";
-import type { ProcessedContent } from "@jackyzha0/quartz/plugins/vfile";
-import type { BuildCtx } from "@jackyzha0/quartz/util/ctx";
-import type { FilePath, FullSlug } from "@jackyzha0/quartz/util/path";
+import type {
+  QuartzEmitterPlugin,
+  ProcessedContent,
+  BuildCtx,
+  FilePath,
+  FullSlug,
+} from "@quartz-community/types";
 import type { ExampleEmitterOptions } from "./types";
 
 const defaultOptions: ExampleEmitterOptions = {

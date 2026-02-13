@@ -1,6 +1,9 @@
-import type { BuildCtx } from "@jackyzha0/quartz/util/ctx";
-import type { QuartzConfig } from "@jackyzha0/quartz/cfg";
-import type { ProcessedContent, QuartzPluginData } from "@jackyzha0/quartz/plugins/vfile";
+import type {
+  BuildCtx,
+  QuartzConfig,
+  ProcessedContent,
+  QuartzPluginData,
+} from "@quartz-community/types";
 import { VFile } from "vfile";
 
 type BuildCtxOverrides = Omit<Partial<BuildCtx>, "argv"> & {

@@ -6,8 +6,7 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { findAndReplace } from "mdast-util-find-and-replace";
 import { visit } from "unist-util-visit";
-import type { QuartzTransformerPlugin } from "@jackyzha0/quartz/plugins/types";
-import type { BuildCtx } from "@jackyzha0/quartz/util/ctx";
+import type { QuartzTransformerPlugin, BuildCtx } from "@quartz-community/types";
 import type { ExampleTransformerOptions } from "./types";
 
 const defaultOptions: ExampleTransformerOptions = {

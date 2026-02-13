@@ -1,15 +1,18 @@
 export type {
+  BuildCtx,
   ChangeEvent,
+  CSSResource,
+  JSResource,
+  ProcessedContent,
   QuartzEmitterPlugin,
   QuartzEmitterPluginInstance,
   QuartzFilterPlugin,
   QuartzFilterPluginInstance,
+  QuartzPluginData,
   QuartzTransformerPlugin,
   QuartzTransformerPluginInstance,
-} from "@jackyzha0/quartz/plugins/types";
-export type { ProcessedContent, QuartzPluginData } from "@jackyzha0/quartz/plugins/vfile";
-export type { BuildCtx } from "@jackyzha0/quartz/util/ctx";
-export type { CSSResource, JSResource, StaticResources } from "@jackyzha0/quartz/util/resources";
+  StaticResources,
+} from "@quartz-community/types";
 
 export interface ExampleTransformerOptions {
   /** Token used to highlight text, defaults to ==highlight== */
