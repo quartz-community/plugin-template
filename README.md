@@ -23,24 +23,27 @@ npm run build
 
 ## Usage in Quartz
 
-Install your plugin into a Quartz site and register it in `quartz.config.ts`:
+Install your plugin into a Quartz v5 site:
+
+```bash
+npx quartz plugin add github:quartz-community/plugin-template
+```
+
+Then register it in `quartz.config.ts`:
 
 ```ts
-import {
-  ExampleTransformer,
-  ExampleFilter,
-  ExampleEmitter,
-} from "@quartz-community/plugin-template";
+import * as ExternalPlugin from "./.quartz/plugins";
 
 export default {
   configuration: {
     pageTitle: "My Garden",
   },
   plugins: {
-    transformers: [ExampleTransformer({ highlightToken: "==" })],
-    filters: [ExampleFilter({ allowDrafts: false })],
-    emitters: [ExampleEmitter({ manifestSlug: "plugin-manifest" })],
+    transformers: [ExternalPlugin.ExampleTransformer({ highlightToken: "==" })],
+    filters: [ExternalPlugin.ExampleFilter({ allowDrafts: false })],
+    emitters: [ExternalPlugin.ExampleEmitter({ manifestSlug: "plugin-manifest" })],
   },
+  externalPlugins: ["github:quartz-community/plugin-template"],
 };
 ```
 
@@ -51,7 +54,7 @@ This mirrors Astro's integration pattern (a function returning an object of hook
 composition and configuration explicit and predictable.
 
 ```ts
-import type { QuartzTransformerPlugin } from "@jackyzha0/quartz/plugins/types";
+import type { QuartzTransformerPlugin } from "@quartz-community/types";
 
 export const MyTransformer: QuartzTransformerPlugin<{ enabled: boolean }> = (opts) => {
   return {
