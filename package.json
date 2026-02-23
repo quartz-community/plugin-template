@@ -72,6 +72,8 @@
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "vfile": "^6.0.3"
@@ -86,8 +88,6 @@
     "eslint-config-prettier": "^9.1.0",
     "preact": "^10.28.2",
     "prettier": "^3.6.2",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.3",
     "vitest": "^2.1.9"
   },
   "quartz": {
@@ -100,6 +100,16 @@
     "defaultOrder": 50,
     "defaultEnabled": true,
     "defaultOptions": {},
+    "optionSchema": {
+      "highlightToken": {
+        "type": "enum",
+        "values": [
+          "==",
+          "**",
+          "~~"
+        ]
+      }
+    },
     "components": {
       "ExampleComponent": {
         "displayName": "Example Component",
