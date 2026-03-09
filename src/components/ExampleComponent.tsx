@@ -4,9 +4,8 @@ import type {
   QuartzComponentConstructor,
 } from "@quartz-community/types";
 import { classNames } from "../util/lang";
-import { i18n } from "../i18n";
 import style from "./styles/example.scss";
-// @ts-ignore
+// @ts-expect-error - inline script import handled by Quartz bundler
 import script from "./scripts/example.inline.ts";
 
 export interface ExampleComponentOptions {

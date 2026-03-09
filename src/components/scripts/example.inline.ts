@@ -1,4 +1,3 @@
-// @ts-nocheck
 // ============================================================================
 // Example Inline Script for Quartz Community Plugin
 // ============================================================================
@@ -15,14 +14,14 @@
 // ============================================================================
 
 // Helper: Remove all children from an element
-function removeAllChildren(element) {
+function _removeAllChildren(element: Element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
 
 // Helper: Simplify slug by removing trailing /index
-function simplifySlug(slug) {
+function _simplifySlug(slug: string) {
   if (slug.endsWith("/index")) {
     return slug.slice(0, -6);
   }
@@ -38,7 +37,7 @@ function getCurrentSlug() {
 }
 
 // Helper: Fetch content index (commonly needed for search, graph, explorer)
-async function fetchContentIndex() {
+async function _fetchContentIndex() {
   try {
     const response = await fetch("/static/contentIndex.json");
     const data = await response.json();
@@ -56,10 +55,10 @@ function init() {
   if (components.length === 0) return;
 
   // Example: Track cleanup functions for event listeners
-  const cleanupFns = [];
+  const cleanupFns: Array<() => void> = [];
 
   // Example: Add a keyboard shortcut (Ctrl/Cmd + Shift + E)
-  function keyboardHandler(e) {
+  function keyboardHandler(e: KeyboardEvent) {
     if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "e") {
       e.preventDefault();
       console.log("[ExampleComponent] Keyboard shortcut triggered!");
