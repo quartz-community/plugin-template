@@ -5,7 +5,7 @@
 // It is bundled as a string and injected via Component.afterDOMLoaded.
 //
 // Key patterns demonstrated:
-// 1. Listening to Quartz navigation events ('nav', 'prenav')
+// 1. Listening to Quartz navigation events ('nav', 'prenav', 'render')
 // 2. Fetching content index data
 // 3. DOM manipulation with cleanup
 // 4. State persistence (localStorage/sessionStorage)
@@ -90,9 +90,16 @@ function init() {
 
 // Listen to Quartz navigation events
 // 'nav' fires after page navigation (including initial load)
+// 'render' fires when DOM content changes in-place (e.g. after decryption, dynamic content)
 document.addEventListener("nav", (e) => {
   const slug = e.detail?.url || getCurrentSlug();
   console.log("[ExampleComponent] Navigation to:", slug);
+  init();
+});
+
+// 'render' fires when DOM content changes in-place and components need re-initialization
+document.addEventListener("render", () => {
+  console.log("[ExampleComponent] Render event - re-initializing");
   init();
 });
 
