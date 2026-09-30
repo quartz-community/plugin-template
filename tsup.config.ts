@@ -114,6 +114,7 @@ export default defineConfig({
   esbuildOptions(options) {
     options.jsx = "automatic";
     options.jsxImportSource = "preact";
+    options.external = SINGLETON_EXTERNALS;
   },
   esbuildPlugins: [inlineScriptPlugin],
 });
