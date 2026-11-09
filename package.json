@@ -71,6 +71,7 @@
     "@quartz-community/utils": "github:quartz-community/utils"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.0",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.10.0",
@@ -78,12 +79,10 @@
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "github-slugger": "^2.0.0",
     "hast-util-to-jsx-runtime": "^2.3.6",
     "mdast-util-find-and-replace": "^3.0.2",
     "preact": "^10.28.2",
     "prettier": "^3.6.2",
-    "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
@@ -93,8 +92,7 @@
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0",
     "vfile": "^6.0.3",
-    "vitest": "^2.1.9",
-    "@changesets/cli": "^2.29.0"
+    "vitest": "^2.1.9"
   },
   "quartz": {
     "name": "plugin-template",

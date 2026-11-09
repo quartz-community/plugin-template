@@ -141,7 +141,7 @@ ExampleEmitter({
 | `highlightToken`  | `string`  | `"=="`                     | Token used to highlight text. |
 | `headingClass`    | `string`  | `"example-plugin-heading"` | Class added to headings.      |
 | `enableGfm`       | `boolean` | `true`                     | Enables `remark-gfm`.         |
-| `addHeadingSlugs` | `boolean` | `true`                     | Enables `rehype-slug`.        |
+| `addHeadingSlugs` | `boolean` | `true`                     | Adds heading ids.             |
 
 ### `ExampleFilter(options)`
 
