@@ -1,6 +1,6 @@
 {
   "name": "@quartz-community/plugin-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Template repository for Quartz community plugins.",
   "type": "module",
   "license": "MIT",
